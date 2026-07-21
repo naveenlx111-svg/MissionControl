@@ -30,3 +30,6 @@ class CardWidget(QWidget):
 
     def set_subtitle(self, subtitle):
         self.subtitle.setText(subtitle)
+    
+    def set_title(self,title):
+        self.title.setText(title)

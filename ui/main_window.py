@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):
         self.footer_layout = QHBoxLayout()        
         #Temporary Labels
         self.header_layout.addWidget(HeaderWidget())
-        self.dashboard_layout.addWidget(DashboardWidget())
+        self.dashboard_layout.addWidget(DashboardWidget(self.config))
         self.footer_layout.addWidget(QLabel("Footer"))
 
         #Add layouts
