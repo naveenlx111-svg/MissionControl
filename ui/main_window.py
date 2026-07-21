@@ -10,9 +10,9 @@ from widgets.dashboard_widget import DashboardWidget
 
 class MainWindow(QMainWindow):
 
-    def __init__(self):
+    def __init__(self,config):
         super().__init__()
-
+        self.config = config
         self.setup_window()
         self.setup_ui()
         self.connect_signals()

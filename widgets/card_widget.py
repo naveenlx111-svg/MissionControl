@@ -24,3 +24,9 @@ class CardWidget(QWidget):
         layout.addWidget(self.value)
         layout.addStretch()
         layout.addWidget(self.subtitle)
+    def set_value(self, value):
+        self.value.setText(str(value))
+
+
+    def set_subtitle(self, subtitle):
+        self.subtitle.setText(subtitle)

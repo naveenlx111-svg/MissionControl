@@ -4,9 +4,9 @@ from widgets.card_widget import CardWidget
 
 class DashboardWidget(QWidget):
 
-    def __init__(self):
+    def __init__(self,config):
         super().__init__()
-
+        self.config = config
         self.setup_ui()
 
     def setup_ui(self):
