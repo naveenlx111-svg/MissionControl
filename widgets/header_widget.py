@@ -22,4 +22,6 @@ class HeaderWidget(QWidget):
 
         layout.addWidget(title)
         layout.addStretch()
-        layout.addWidget(ClockWidget())
+        clock = ClockWidget()
+        clock.setStyleSheet("background:red;")
+        layout.addWidget(clock)

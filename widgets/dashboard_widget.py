@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QWidget, QGridLayout, QSizePolicy
 
 from widgets.card_widget import CardWidget
 from utils.date_utils import days_remaining
-
+from widgets.progress_widget import ProgressWidget
 
 class DashboardWidget(QWidget):
 
@@ -27,11 +27,7 @@ class DashboardWidget(QWidget):
             "Days Remaining"
         )
 
-        self.problems_card = CardWidget(
-            "Problems",
-            "--",
-            "Remaining"
-        )
+        self.problems_card = ProgressWidget(self.config)
 
         self.daily_goal_card = CardWidget(
             "Daily Goal",
@@ -71,11 +67,6 @@ class DashboardWidget(QWidget):
     def refresh(self):
         self.countdown_card.set_value(
             days_remaining(self.config.get("target_date"))
-        )
-
-        self.problems_card.set_value(
-            self.config.get("total_problems")
-            - self.config.get("solved_problems")
         )
 
         self.daily_goal_card.set_value(

@@ -1,9 +1,9 @@
 from PySide6.QtWidgets import QLabel, QVBoxLayout, QFrame
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
+from widgets.base_widget import BaseWidget
 
-
-class CardWidget(QFrame):
+class CardWidget(BaseWidget):
     def __init__(self, title, value="--", subtitle=""):
         super().__init__()
 
