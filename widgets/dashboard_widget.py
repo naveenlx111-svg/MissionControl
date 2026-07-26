@@ -4,6 +4,7 @@ from widgets.card_widget import CardWidget
 from utils.date_utils import days_remaining
 from widgets.progress_widget import ProgressWidget
 from widgets.daily_goal_widget import DailyGoalWidget
+from widgets.topic_widget import TopicWidget
 class DashboardWidget(QWidget):
 
     def __init__(self, config):
@@ -31,12 +32,7 @@ class DashboardWidget(QWidget):
 
         self.daily_goal_card = DailyGoalWidget(self.config)
 
-        self.topic_card = CardWidget(
-            "Current Topic",
-            "--",
-            "Current Focus"
-        )
-
+        self.topic_card = TopicWidget(self.config)
         cards = [
             self.countdown_card,
             self.problems_card,
