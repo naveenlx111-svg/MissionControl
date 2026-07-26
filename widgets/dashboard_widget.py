@@ -5,6 +5,8 @@ from utils.date_utils import days_remaining
 from widgets.progress_widget import ProgressWidget
 from widgets.daily_goal_widget import DailyGoalWidget
 from widgets.topic_widget import TopicWidget
+from widgets.countdown_widget import CountdownWidget
+
 class DashboardWidget(QWidget):
 
     def __init__(self, config):
@@ -22,11 +24,7 @@ class DashboardWidget(QWidget):
         layout.setHorizontalSpacing(20)
         layout.setVerticalSpacing(20)
 
-        self.countdown_card = CardWidget(
-            "Countdown",
-            "--",
-            "Days Remaining"
-        )
+        self.countdown_card = CountdownWidget(self.config)
 
         self.problems_card = ProgressWidget(self.config)
 
@@ -57,9 +55,6 @@ class DashboardWidget(QWidget):
         layout.setRowStretch(1, 1)
 
     def refresh(self):
-        self.countdown_card.set_value(
-            days_remaining(self.config.get("target_date"))
-        )
 
         self.topic_card.set_value(
             self.config.get("current_topic")
