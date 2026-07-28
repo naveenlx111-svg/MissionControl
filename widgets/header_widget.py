@@ -2,17 +2,13 @@ from PySide6.QtWidgets import QWidget, QLabel, QHBoxLayout
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import QPushButton
 from widgets.clock_widget import ClockWidget
-from ui.dialogs.settings_dialogs import SettingsDialog
+from PySide6.QtCore import Signal
 
 class HeaderWidget(QWidget):
-
+    settings_clicked = Signal()
     def __init__(self):
         super().__init__()
         self.setup_ui()
-
-    def open_settings(self):
-        dialog = SettingsDialog()
-        dialog.exec()
 
     def setup_ui(self):
         layout = QHBoxLayout(self)
@@ -32,5 +28,5 @@ class HeaderWidget(QWidget):
 
         self.settings_btn = QPushButton("⚙")
         self.settings_btn.setFixedSize(40, 40)
-        self.settings_btn.clicked.connect(self.open_settings)
+        self.settings_btn.clicked.connect(self.settings_clicked.emit)
         layout.addWidget(self.settings_btn)

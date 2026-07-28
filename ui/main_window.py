@@ -7,6 +7,7 @@ from PySide6.QtWidgets import (QMainWindow,
 from PySide6.QtCore import Qt
 from widgets.header_widget import HeaderWidget
 from widgets.dashboard_widget import DashboardWidget
+from ui.dialogs.settings_dialog import SettingsDialog
 
 class MainWindow(QMainWindow):
 
@@ -32,8 +33,11 @@ class MainWindow(QMainWindow):
         self.dashboard_layout = QVBoxLayout()
         self.footer_layout = QHBoxLayout()        
         #Temporary Labels
-        self.header_layout.addWidget(HeaderWidget())
-        self.dashboard_layout.addWidget(DashboardWidget(self.config))
+        self.header = HeaderWidget()
+        self.dashboard = DashboardWidget(self.config)
+
+        self.header_layout.addWidget(self.header)
+        self.dashboard_layout.addWidget(self.dashboard)
         self.footer_layout.addWidget(QLabel("Footer"))
 
         #Add layouts
@@ -43,4 +47,10 @@ class MainWindow(QMainWindow):
 
 
     def connect_signals(self):
-        pass
+        self.header.settings_clicked.connect(self.open_settings)
+    def open_settings(self):
+        dialog = SettingsDialog()
+
+        dialog.settings_saved.connect(self.dashboard.refresh)
+
+        dialog.exec()

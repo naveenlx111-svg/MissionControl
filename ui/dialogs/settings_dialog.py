@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from PySide6.QtCore import Signal
 from PySide6.QtCore import QDate
 from PySide6.QtWidgets import (
     QDateEdit,
@@ -17,6 +17,7 @@ from core.config_manager import ConfigManager
 
 class SettingsDialog(QDialog):
 
+    settings_saved = Signal()
     def __init__(self):
         super().__init__()
 
@@ -105,5 +106,6 @@ class SettingsDialog(QDialog):
             self.topic.text())
 
         self.config.save()
+        self.settings_saved.emit()
 
         self.accept()
