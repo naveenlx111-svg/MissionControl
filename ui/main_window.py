@@ -49,7 +49,7 @@ class MainWindow(QMainWindow):
     def connect_signals(self):
         self.header.settings_clicked.connect(self.open_settings)
     def open_settings(self):
-        dialog = SettingsDialog()
+        dialog = SettingsDialog(self.config)
 
         dialog.settings_saved.connect(self.dashboard.refresh)
 

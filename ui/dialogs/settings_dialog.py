@@ -12,16 +12,13 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
 )
 
-from core.config_manager import ConfigManager
-
-
 class SettingsDialog(QDialog):
 
     settings_saved = Signal()
-    def __init__(self):
+    def __init__(self, config):
         super().__init__()
 
-        self.config = ConfigManager()
+        self.config = config
 
         self.setWindowTitle("Settings")
         self.resize(400, 300)

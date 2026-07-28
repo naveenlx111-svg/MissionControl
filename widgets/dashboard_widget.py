@@ -1,7 +1,4 @@
 from PySide6.QtWidgets import QWidget, QGridLayout, QSizePolicy
-
-from widgets.card_widget import CardWidget
-from utils.date_utils import days_remaining
 from widgets.progress_widget import ProgressWidget
 from widgets.daily_goal_widget import DailyGoalWidget
 from widgets.topic_widget import TopicWidget
@@ -55,7 +52,9 @@ class DashboardWidget(QWidget):
         layout.setRowStretch(1, 1)
 
     def refresh(self):
-
-        self.topic_card.set_value(
-            self.config.get("current_topic")
-        )
+        self.config.reload()
+        
+        self.countdown_card.refresh()
+        self.problems_card.refresh()
+        self.daily_goal_card.refresh()
+        self.topic_card.refresh()
