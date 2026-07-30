@@ -1,7 +1,7 @@
 {
     "target_date": "2026-12-31",
     "total_problems": 703,
-    "solved_problems": 85,
+    "solved_problems": 83,
     "daily_goal": 10,
     "today_completed": 0,
     "current_topic": "Dynamic Programming"
